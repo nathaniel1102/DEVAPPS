@@ -3,6 +3,12 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
+
+def test_import_and_predict():
+    # Write test cases for your import_and_predict function
+    # For example:
+    assert import_and_predict(some_image, some_model) == expected_output
+    
 def main():
 
     st.title("Crab and Lobster Image Classifier with Rating")
