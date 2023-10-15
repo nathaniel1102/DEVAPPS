@@ -6,8 +6,8 @@ import numpy as np
 def main():
     # Set up the Streamlit app
 
-    st.title("Crab and Lobster Image Classifier")
-    st.write("This app classifies whether the image is a Crab or a Lobster")
+    st.title("Crab and Lobster Image Classifier with Rating")
+    st.write("This app classifies whether the image is a Crab or a Lobster and allows you to rate the prediction")
 
     @st.cache(allow_output_mutation=True)
     def load_model():
@@ -31,6 +31,9 @@ def main():
         probability = np.max(prediction)
         string = f"Prediction: {class_name} | Probability: {probability:.2f}"
         st.success(string)
+
+        rating = st.slider("Rate the prediction", 1, 5, 3)
+        st.write(f"You rated the prediction: {rating} stars")
 
     model = load_model()
     class_names = ["Crab", "Lobster"]
