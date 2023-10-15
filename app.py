@@ -23,7 +23,7 @@ def main():
         prediction = model.predict(img_reshape)
         return prediction
 
-    def display_prediction(image, model, class_names):
+    def display_prediction(image, model, class_names, index):
         st.image(image, use_column_width=True)
         prediction = import_and_predict(image, model)
         class_index = np.argmax(prediction)
@@ -32,8 +32,8 @@ def main():
         string = f"Prediction: {class_name} | Probability: {probability:.2f}"
         st.success(string)
 
-        rating = st.slider("Rate the prediction", 1, 5, 3)
-        st.write(f"You rated the prediction: {rating} stars")
+        rating = st.slider(f"Rate the prediction {index + 1}", 1, 5, 3, key=f"slider_{index}")
+        st.write(f"You rated the prediction {index + 1}: {rating} stars")
 
     model = load_model()
     class_names = ["Crab", "Lobster"]
@@ -43,9 +43,9 @@ def main():
     if not file_list:
         st.text("Please upload one or more image files")
     else:
-        for file in file_list:
+        for i, file in enumerate(file_list):
             image = Image.open(file)
-            display_prediction(image, model, class_names)
+            display_prediction(image, model, class_names, i)
 
 if __name__ == "__main__":
     main()
