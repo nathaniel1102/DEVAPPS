@@ -4,7 +4,6 @@ from PIL import Image, ImageOps
 import numpy as np
 
 def main():
-    # Set up the Streamlit app
 
     st.title("Crab and Lobster Image Classifier with Rating")
     st.write("This app classifies whether the image is a Crab or a Lobster and allows you to rate the prediction")
