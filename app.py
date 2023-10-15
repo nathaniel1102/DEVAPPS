@@ -4,10 +4,6 @@ from PIL import Image, ImageOps
 import numpy as np
 
 def main():
-  def test_classification():
-    app = streamlit_app.main()
-    result = app.classify_image("path/to/image.jpg")  # Modify this based on your app structure
-    assert result in ("Crab", "Lobster")
 
     st.title("Crab and Lobster Image Classifier with Rating")
     st.write("This app classifies whether the image is a Crab or a Lobster and allows you to rate the prediction")
