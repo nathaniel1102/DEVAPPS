@@ -34,18 +34,14 @@ def main():
     model = load_model()
     class_names = ["Crab", "Lobster"]
 
-    file = st.file_uploader("Select an image of Crab or Lobster on your computer", type=["jpg", "png", "jpeg"])
+    file_list = st.file_uploader("Select multiple images of Crab or Lobster in your computer", accept_multiple_files=True)
 
-    if file is None:
-        st.text("Please upload an image file")
+    if not file_list:
+        st.text("Please upload one or more image files")
     else:
-        image = Image.open(file)
-        st.image(image, use_column_width=True)
-        prediction = import_and_predict(image, model)
-        class_index = np.argmax(prediction)
-        class_name = class_names[class_index]
-        string = "Prediction: " + class_name
-        st.success(string)
- 
+        for file in file_list:
+            image = Image.open(file)
+            display_prediction(image, model, class_names)
+
 if __name__ == "__main__":
     main()
