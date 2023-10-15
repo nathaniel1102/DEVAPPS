@@ -5,7 +5,6 @@ import numpy as np
 import cv2
 
 def main():
-    # set up the Streamlit app
 
     st.title("Classifies the Crab and Lobster Images)")
     st.write("This app classifies whether the image is Crab or Lobster")
