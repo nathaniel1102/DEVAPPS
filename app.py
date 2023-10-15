@@ -31,7 +31,10 @@ def main():
         string = f"Prediction: {class_name} | Probability: {probability:.2f}"
         st.success(string)
 
-    file = st.file_uploader("Select a image of Crab or Lobster in your computer", type=["jpg", "png", "jpeg"])
+    model = load_model()
+    class_names = ["Crab", "Lobster"]
+
+    file = st.file_uploader("Select an image of Crab or Lobster on your computer", type=["jpg", "png", "jpeg"])
 
     if file is None:
         st.text("Please upload an image file")
