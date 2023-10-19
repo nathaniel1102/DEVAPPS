@@ -24,7 +24,7 @@ def main():
         prediction = model.predict(img_reshape)
         return prediction
 
-    def display_prediction(image, model, class_names, index);
+    def display_prediction(image, model, class_names, index):
         st.image(image, use_column_width=True)
         prediction = import_and_predict(image, model)
         class_index = np.argmax(prediction)
