@@ -10,6 +10,7 @@ def main():
     st.write("This app classifies whether the image is a Crab or a Lobster and allows you to rate the prediction")
 
     @st.cache(allow_output_mutation=True)
+
     def load_model():
         model = tf.keras.models.load_model('weights-improvement-06-0.97.hdf5')
         return model
@@ -31,6 +32,7 @@ def main():
         probability = np.max(prediction)
         string = f"Prediction: {class_name} | Probability: {probability:.2f}"
         st.success(string)
+
 
         rating = st.slider(f"Rate the prediction {index + 1}", 1, 5, 3, key=f"slider_{index}")
         st.write(f"You rated the prediction {index + 1}: {rating} stars")
